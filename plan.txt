@@ -1,0 +1,120 @@
+Arena Editor
+
+version 1.0:
+-fonctions d'édition simple (cases de différentes largeurs) + modification groupée (rectangle min) + sélection (rectangle)
+-sauvegarde du résultat
+-zoom
+-copier/coller/couper
+-autres trucs d'affichage
+-orientation des tiles
+-performances décentes
+-rendre la barre de progrès fonctionnelle et cohérente
+
+
+Fonctions et interface :
+
+tâche courante : sélection rectangulaire avec indication graphique et tout puis
+-bouton séparé pour peindre un rectangle
+-couper/copier/coller
+-sélectionner tout
+
+
+bugs : 
+-problème lors de l'annulation du dessin d'un rectangle de vide
+-possibles trucs étranges dans l'enchaînement de divers undo/redo avec plusieurs séquences d'actions séparées
+-windows 7 : mainPanel qui ne se redimensionne pas
+-DoTheWallThing : IndexError que je n'arrive pas à recréer
+-bug :promener la souris avec le bouton du milieu enfoncé déclenche un évènement de dragging et donc le dessin
+
+divers :
+-zoom : indication du niveau de zoom dans la barre de statut à droite (à la place de la date)
+-réorganiser paintSelection et la manière dont on ajoute les cases à la sélection pour limiter le nombre de paramètres. c'est un peu ridicule là
+-fonction : dessin de rectangle inversé (juste le rebord)
+-lire la tile et la couleur du ciel dans init.txt
+-barre de progrès suivant la sauvegarde : demande probablement qu'elle soit faite dans un thread
+-améliorer le style des miniatures (panneau image+texte+background différent si sélectionné)
+-améliorer la sauvegarde des fichiers
+	-->rendre les noms uniques
+-multithreader les parties lourdes, au moins pour la réactivité du soft
+-faire/trouver des images sympas pour les buttons et curseurs
+
+A-Menu
+I-Fichier
+	1-ouverture/création
+		-depuis un fichier						FAIT	
+		-nouvelle arène (vide)					FAIT
+		-nouvelle arène (defaut)				FAIT
+	2-sauvegarde
+		-enregistrer dans un fichier .txt		FAIT
+		-enregistrer image courante				FAIT
+		-enregistrer toutes les images			FAIT
+	3-Quitter									FAIT
+
+II-Edition
+	1-Actions
+		-annuler								FAIT
+		-rétablir								FAIT
+	2-c/c
+		-couper
+		-copier
+		-coller
+	3-Sélection
+		-sélectionner tout
+
+III-Affichage
+	1-Fenêtres/autres
+		-afficher la fenêtre d'outils (pinceaux et sélections)
+	2-Navigation
+		-aller au niveau précédent									FAIT
+		-aller au niveau suivant									FAIT
+	3-Divers
+		-zoomer/dézoomer											FAIT
+		-afficher la grille
+
+IV-Outils
+	-modifier les couleurs (ouvre l'éditeur de colorscheme)			FAIT
+	-modifier les brosses
+	-Modifier le fichier de configuration							FAIT	
+	-Charger un tileset												FAIT
+	-Charger un colorscheme											FAIT
+
+V-Aide
+	1-Afficher l'aide
+	2-A propos d'ArenaEditor
+	
+B-Barre d'outil
+	1-Fichiers
+		-ouvrir															 FAIT
+		-nouveau (vide)													 FAIT
+	2-Tiles
+		-un bouton bitmap pour chacune des 15 tiles acceptées par le jeu FAIT
+	3-Outils
+		-peindre une case 												 FAIT
+		-largeur du pinceau 											 FAIT
+		-peindre un rectangle											 FAIT
+		-"pot de peinture" : peindre toutes les cases identiques adjacentes
+		-sélectioner un rectangle
+
+C-Fenêtres
+	1-Editeur de colorscheme
+	------------------------------------
+	|  Vous pouvez modifier une couleur|
+	|   en sélectionnant son rectangle |
+	|            _               _     |
+	|	BLACK : |_|		WHITE : |_|    |
+	|            _               _     |
+	|	DGRAY : |_|     LGRAY : |_|    |
+	|                                  |
+	|                                  |
+	|  _____________________________   |
+	|                   _______   ___  |
+	| Load from file : |_______| |...| |
+	|  _ __________    ____________    |                   
+	| |use current |  |save to file|   |
+	|__________________________________|
+
+	2-Editeur de palettes
+	
+D-Fichier de configuration
+	A préciser, mais un fichier (.txt ou.json) lu à l'initialisation qui donne les divers paramètres du logiciel 
+	(tileset, colorcheme, et les autres à identifier).

@@ -1,0 +1,10 @@
+{
+    //fichier contenant les définitions des couleurs utilisées par l'application
+    "colorscheme": "saved/colors.txt",
+    //emplacement du tileset par défaut
+    "tileset": "saved/taffer.png",
+    //arène par défaut
+    "default_arena": "data/arena.txt",
+    //répertoire de sauvegarde par défaut
+    "save_directory": "saved"
+}

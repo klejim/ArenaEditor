@@ -1,0 +1,120 @@
+25/09/2017:
+-créé et rempli plan.txt
+-traduit l'interface en français
+-ajouté une partie des boutons et menus (fonctions pour la plupart non implantées)
+-implanté les fonctions "Nouvelle arène (defaut)" et "Nouvelle arène (vide)"
+-modifié la barre d'outil : les images sont chargées depuis data/curses_square_16x16.bmp et s'affichent dans un ordre précis (à redéfinir plus tard)
+-self.map est initialisé à None au lancement. Modifié les fonctions touchant aux images pour n'agir que si map != Non
+
+25/09/2017-28/09/2017 :
+-étudié divers moyens de parallélisation et d'amélioration des performances pour finalement se rendre compte que supprimer le débugueur
+les rendait acceptables. Youpi.
+
+29/09/2017 : 
+-Réussi à modifier l'image principale lorsqu'on clique dessus (différence clic droit/gauche).
+-ajouté quelques points au plan
+
+04/10/2017 : 
+-implémenté le dragging (pas fini)
+
+05/10/2017:
+-amélioration du dragging pour qu'il s'effectue correctement et en temps réel
+-ajouté des accélérateurs aux menus, ajouté "Enregistrer sous" et sa fonction associée
+-modification de la tile peinte selon le bouton de la barre d'outil sélectionné
+-amorcé et à faire : sauvegarde des modifications (objet map et images)
+
+06/10/2017:
+-sauvegarde des images faite, manque les miniatures (insérer la nouvelle dans le sizer)
+-manque aussi l'orientation des tiles
+
+07/10/2017:
+-terminé la sauvegarde des images et la mise à jour des miniatures
+-arrangé la façon dont images et miniatures sont crées et mises à jour
+-nettoyé un peu le code (supprimé beaucoup de variables gardant des références inutiles vers des éléments de la fenêtre)
+-implémenté le changement du niveau courant quand on clique sur une des miniatures
+-ajouté la possibilité d'enregistrer le niveau actuel ou toute l'arène sous forme de .png
+-manque toujours l'orientation
+
+10/10/2017:
+-les cases au-dessus d'une rampe sont des downwards ramps
+
+14/10/2017:
+-implémenté la modification des tiles voisines selon celle dessinée pour tout sauf les murs. Voir pour l'existence de cas particuliers
+non traités
+-décidé d'abandonner l'idée de stocker un double de la map sous forme de liste de caractère
+à terminer : les murs et la sauvegarde à partir de la liste des types
+
+15/10/2017:
+-terminé la sauvegarde
+-les paramètres sont lus depuis un fichier config.json placé à la racine de l'application
+-amélioré benchmark jusqu'à obtenur un profiler basique (decorators.py -> profiling.py)
+-quelques changments sur diverses fonctions pour une légère optimisation dans les boucles
+
+16/10/2017:
+-oblitéré les problèmes de performances du dessin
+
+17/10/2017:
+-permis l'usage de commentaires dans le fichier config.json
+-ui : la barre de progrès suit le chargement de l'arène (onLoad, onNew et onNewDefault)
+	  le curseur change selon la situation (chargement d'une arène, au-dessus de la zone d'édition)
+
+18/10/2017:
+-terminé l'orientation des murs
+-réglé un problème de gestion de la transparence des tiles peintes
+-ajouté la possibilité de modifier config.json via l'interface
+
+19/10/2017:
+-ajouté support pour modifier la taille du pinceau (pas d'interface pour l'instant) et abordé le problème de la sélection
+-ajouté la fonction "charger un tileset"
+
+23/10/2017:
+-corrigé des bugs sur le dessin des murs dans les coins et bordures ainsi qu'au dernier étage
+-implémenté le chargement d'une palette de couleurs depuis un fichier texte
+
+24/10/2017:
+-ajouté support pour les opérations de sélection et peinture d'une sélection (manque l'interface)
+
+25/10/2017:
+-terminé le choix du modes pinceau/sélection ainsi que celui de la largeur du pinceau
+-presque terminé l'éditeur de palette de couleur
+
+26/10/2017:
+-terminé l'éditeur de palette
+-corrigé des bugs dans le dessin
+-demande de sauvegarde avant de quitter le programme
+-paramétré la compilation via Pyinstaller
+
+29/10/2017:
+-computechanges : opérations binaires plutôt que vérification de présence dans une liste pour vérifier si une case est ouverte ou un mur (plus rapide)
+-ajouté le type Tile.OPEN_WALL pour indiquer les dalles présentes uniquement par la présence de murs au niveau d'en-dessous
+
+31/10/2017:
+-modifié le fonctionnement du dessin
+
+07/11/2017:
+-remplacé les diverses remises à jour des images de l'arène (après une modif de la config) par loadArena, facilitant son utilisation par les autres fenêtres. Aussi rendu plus logique la demande de sauvegarde
+bugs:
+-Tile.OPEN_WALL n'avait pas d'overtype
+-sélection non vidée à la fin d'un dragging
+
+18/11/2017:
+-changé quelques trucs
+-éliminé les effets de clignotement lors du dessin
+
+20/11/2017:
+-commencé à réfléchir et implémenter la gestion des actions à annuler/refaire
+
+26/11/2017:
+-terminé d'implémenter les fonctions permettant d'annuler/rétablir
+-presque terminé l'optimisation de paintSelection
+-cassé la fonction annuler dans le même mouvement, histoire de pas avancer trop vite
+
+27/11/2017:
+-vraiment, pour de bon, terminé annuler/rétablir
+-achevé l'optimisation de paintSelection
+
+03/12/2017:
+-zoom terminé, putain
+
+19/12/2017:
+-tout cassé durant un travail de correction de la syntaxe. Honte et galère, tout est ok sauf le zoom. Revoir paintSelection pour se débarraser des arguments redondants.
