@@ -20,7 +20,7 @@ if getattr(sys, 'frozen', False):
     CWD = sys._MEIPASS
 else:
     CWD = "../"
-
+__PROFILE__ = False
 IMG = CWD + "ressources/"
 # some constants
 EDIT_SIZE_X, EDIT_SIZE_Y = 1600, 1600
@@ -1093,6 +1093,7 @@ class MyFrame(wx.Frame):
         self.loadMainImg(4)
         self.current_level = 4
         self.SetCursor(wx.Cursor(wx.CURSOR_ARROW))
+        self.sb.g.SetValue(0)
 
     @benchmark
     def onNewDefault(self, event):
@@ -1516,7 +1517,7 @@ en développement, ses fonctionnalités ne sont pas toutes implémentées.'''
             if dlg.ShowModal() == wx.ID_YES:
                 self.onSave()
         print("closing")
-        profile()
+        if __PROFILE__: profile()
         self.Destroy()
 
 
